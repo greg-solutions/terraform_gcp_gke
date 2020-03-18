@@ -1,4 +1,3 @@
-
 variable "network" {
 }
 
@@ -19,9 +18,11 @@ variable "initial_node_count" {
 
 variable "max_node_count" {
   default = 3
+  description = "Maximum number of nodes in the NodePool. Must be >= min_node_count."
 }
 variable "min_node_count" {
   default = 1
+  description = "Minimum number of nodes in the NodePool. Must be >=0 and <= max_node_count."
 }
 variable "node_machine_type" {
   default = "n1-standard-4"
