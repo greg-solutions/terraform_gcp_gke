@@ -20,7 +20,9 @@ variable "initial_node_count" {
 variable "max_node_count" {
   default = 3
 }
-
+variable "min_node_count" {
+  default = 1
+}
 variable "node_machine_type" {
   default = "n1-standard-4"
   description = "The name of a Google Compute Engine machine type. Defaults to n1-standard-4. To create a custom machine type, value should be set as specified here."

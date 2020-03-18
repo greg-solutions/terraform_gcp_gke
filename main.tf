@@ -22,6 +22,7 @@ resource "google_container_cluster" "google_container_cluster" {
       issue_client_certificate = false
     }
   }
+
   # With a private cluster, it is highly recommended to restrict access to the cluster master
   # However, for testing purposes we will allow all inbound traffic.
   master_authorized_networks_config = [
@@ -35,6 +36,7 @@ resource "google_container_cluster" "google_container_cluster" {
     },
   ]
 }
+
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
   name = "pool-node"
@@ -53,7 +55,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   initial_node_count = var.initial_node_count
 
   autoscaling {
-    min_node_count = var.initial_node_count
+    min_node_count = var.min_node_count
     max_node_count = var.max_node_count
   }
 
