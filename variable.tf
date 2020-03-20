@@ -29,6 +29,16 @@ variable "node_machine_type" {
   description = "The name of a Google Compute Engine machine type. Defaults to n1-standard-4. To create a custom machine type, value should be set as specified here."
 }
 
+variable "node_disk_size_gb" {
+  default = "100"
+  description = "Size of disk on worker nodes."
+}
+
+variable "node_disk_type" {
+  default = "pd-standard"
+  description = "Type of disk o worker nodes."
+}
+
 variable "cluster_master_username" {
   default = ""
 }
@@ -49,4 +59,15 @@ variable "oauth_scopes" {
     "https://www.googleapis.com/auth/monitoring",
   ]
   description = "The set of Google API scopes to be made available on all of the node VMs under the 'default' service account. These can be either FQDNs, or scope aliases. The following scopes are necessary to ensure the correct functioning of the cluster:"
+}
+
+variable "master_authorized_networks_config" {
+  type        = list(object({ cidr_block = string, display_name = string }))
+  description = "List of master authorized networks. If none are provided, disallow external access (except the cluster node IPs, which GKE automatically whitelists)."
+  default     = [
+    {
+      cidr_block = "0.0.0.0/0"
+      display_name = "all-for-dev"
+    }
+  ]
 }
