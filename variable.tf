@@ -29,6 +29,16 @@ variable "node_machine_type" {
   description = "The name of a Google Compute Engine machine type. Defaults to n1-standard-4. To create a custom machine type, value should be set as specified here."
 }
 
+variable "node_disk_size_gb" {
+  default = "100"
+  description = "Size of disk on worker nodes."
+}
+
+variable "node_disk_type" {
+  default = "pd-standard"
+  description = "Type of disk o worker nodes."
+}
+
 variable "cluster_master_username" {
   default = ""
 }
