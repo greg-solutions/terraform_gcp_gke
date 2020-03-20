@@ -11,8 +11,6 @@ resource "google_container_cluster" "google_container_cluster" {
   //   https://github.com/mcuadros/terraform-provider-helm/issues/56
   //   https://github.com/terraform-providers/terraform-provider-kubernetes/pull/73
   enable_legacy_abac = true
-  # This setting will make the cluster private
-  enable_private_nodes = "true"
 
   master_auth {
     username = var.cluster_master_username
@@ -22,19 +20,6 @@ resource "google_container_cluster" "google_container_cluster" {
       issue_client_certificate = false
     }
   }
-
-  # With a private cluster, it is highly recommended to restrict access to the cluster master
-  # However, for testing purposes we will allow all inbound traffic.
-  master_authorized_networks_config = [
-    {
-      cidr_blocks = [
-        {
-          cidr_block = "0.0.0.0/0"
-          display_name = "all-for-testing"
-        },
-      ]
-    },
-  ]
 }
 
 
