@@ -50,3 +50,14 @@ variable "oauth_scopes" {
   ]
   description = "The set of Google API scopes to be made available on all of the node VMs under the 'default' service account. These can be either FQDNs, or scope aliases. The following scopes are necessary to ensure the correct functioning of the cluster:"
 }
+
+variable "master_authorized_networks_config" {
+  type        = list(object({ cidr_block = string, display_name = string }))
+  description = "List of master authorized networks. If none are provided, disallow external access (except the cluster node IPs, which GKE automatically whitelists)."
+  default     = [
+    {
+      cidr_block = "0.0.0.0/0"
+      display_name = "all-for-dev"
+    }
+  ]
+}

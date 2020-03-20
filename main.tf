@@ -12,6 +12,16 @@ resource "google_container_cluster" "google_container_cluster" {
   //   https://github.com/terraform-providers/terraform-provider-kubernetes/pull/73
   enable_legacy_abac = true
 
+  master_authorized_networks_config {
+    dynamic "cidr_blocks" {
+      for_each = var.master_authorized_networks_config
+      content {
+        cidr_block = cidr_blocks.value.cidr_block
+        display_name = lookup(cidr_blocks.value, "display_name", null)
+      }
+    }
+  }
+
   master_auth {
     username = var.cluster_master_username
     password = var.cluster_master_password
