@@ -15,7 +15,10 @@ variable "cluster_name" {
 variable "initial_node_count" {
   default = 1
 }
-
+variable "node_count" {
+  default = 1
+  description = "(Optional) Number of nodes"
+}
 variable "max_node_count" {
   default = 3
   description = "Maximum number of nodes in the NodePool. Must be >= min_node_count."

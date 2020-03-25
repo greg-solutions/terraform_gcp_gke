@@ -50,7 +50,8 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     oauth_scopes = var.oauth_scopes
   }
   initial_node_count = var.initial_node_count
-
+  node_count = var.node_count
+  
   autoscaling {
     min_node_count = var.min_node_count
     max_node_count = var.max_node_count
