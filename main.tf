@@ -30,6 +30,8 @@ resource "google_container_cluster" "google_container_cluster" {
       issue_client_certificate = false
     }
   }
+
+  depends_on = [data.google_container_engine_versions.cluster_engine_version]
 }
 
 
@@ -60,4 +62,6 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
     auto_repair = "true"
     auto_upgrade = "true"
   }
+
+  depends_on = [google_container_cluster.google_container_cluster]
 }
