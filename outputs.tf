@@ -57,3 +57,7 @@ output "access_token" {
   value = data.google_client_config.config.access_token
   depends_on = [google_container_node_pool.primary_preemptible_nodes]
 }
+
+output "cluster_ip_cidr" {
+  value = google_container_cluster.google_container_cluster.cluster_ipv4_cidr
+}
