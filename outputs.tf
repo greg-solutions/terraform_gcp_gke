@@ -61,3 +61,8 @@ output "access_token" {
 output "cluster_ip_cidr" {
   value = google_container_cluster.google_container_cluster.cluster_ipv4_cidr
 }
+
+output "node_tags" {
+  value = var.node_tags
+  depends_on = [google_container_node_pool.primary_preemptible_nodes]
+}

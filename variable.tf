@@ -74,3 +74,8 @@ variable "master_authorized_networks_config" {
     }
   ]
 }
+variable "node_tags" {
+  description = "(Optional) Tags for nodes"
+  type = list(string)
+  default = []
+}
