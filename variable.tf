@@ -1,62 +1,73 @@
 variable "network" {
+  type = string
+  default = "(Required) Network for cluster"
 }
-
 variable "subnetwork" {
+  type = string
+  default = "(Required) Subnet for cluster"
 }
 
 variable "cluster_version" {
+  type = string
   default = "latest"
 }
-
 variable "cluster_name" {
+  type = string
   default = "test"
 }
-
 variable "initial_node_count" {
+  type = number
   default = 1
 }
 variable "node_count" {
+  type = number
   default = 1
   description = "(Optional) Number of nodes"
 }
 variable "max_node_count" {
+  type = number
   default = 3
   description = "Maximum number of nodes in the NodePool. Must be >= min_node_count."
 }
 variable "min_node_count" {
+  type = number
   default = 1
   description = "Minimum number of nodes in the NodePool. Must be >=0 and <= max_node_count."
 }
 variable "node_machine_type" {
+  type = string
   default = "n1-standard-4"
   description = "The name of a Google Compute Engine machine type. Defaults to n1-standard-4. To create a custom machine type, value should be set as specified here."
 }
-
 variable "node_disk_size_gb" {
-  default = "100"
+  type = number
+  default = 100
   description = "Size of disk on worker nodes."
 }
 
 variable "node_disk_type" {
+  type = string
   default = "pd-standard"
   description = "Type of disk o worker nodes."
 }
-
 variable "cluster_master_username" {
+  type = string
   default = ""
 }
-
 variable "cluster_master_password" {
+  type = string
   default = ""
 }
 variable "logging_service" {
+  type = string
   default = "logging.googleapis.com/kubernetes"
 }
 variable "monitoring_service" {
+  type = string
   default = "monitoring.googleapis.com/kubernetes"
 }
-
 variable "oauth_scopes" {
+  type = list(string)
   default = [
     "https://www.googleapis.com/auth/logging.write",
     "https://www.googleapis.com/auth/monitoring",
