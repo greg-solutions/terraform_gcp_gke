@@ -31,6 +31,12 @@ resource "google_container_cluster" "google_container_cluster" {
     }
   }
 
+  addons_config {
+    http_load_balancing {
+      disabled = var.http_load_balancing
+    }
+  }
+
   depends_on = [data.google_container_engine_versions.cluster_engine_version]
 }
 

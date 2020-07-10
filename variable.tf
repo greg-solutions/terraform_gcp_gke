@@ -90,3 +90,8 @@ variable "node_tags" {
   type = list(string)
   default = []
 }
+variable "http_load_balancing" {
+  description = "(Optional) The status of the HTTP (L7) load balancing controller addon, which makes it easy to set up HTTP load balancers for services in a cluster. set true to disable."
+  type = bool
+  default = true
+}
