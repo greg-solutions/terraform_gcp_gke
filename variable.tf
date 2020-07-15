@@ -95,3 +95,8 @@ variable "http_load_balancing" {
   type = bool
   default = true
 }
+variable "preemptible" {
+  description = "Enable or Disable node pool preemptible instances"
+  type = bool
+  default = true
+}

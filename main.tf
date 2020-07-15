@@ -46,7 +46,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   cluster = google_container_cluster.google_container_cluster.name
 
   node_config {
-    preemptible = true
+    preemptible = var.preemptible
     machine_type = var.node_machine_type
     disk_size_gb = var.node_disk_size_gb
     disk_type = var.node_disk_type
