@@ -19,11 +19,6 @@ variable "initial_node_count" {
   type = number
   default = 1
 }
-variable "node_count" {
-  type = number
-  default = 1
-  description = "(Optional) Number of nodes"
-}
 variable "max_node_count" {
   type = number
   default = 3
@@ -99,4 +94,7 @@ variable "preemptible" {
   description = "Enable or Disable node pool preemptible instances"
   type = bool
   default = true
+}
+variable "node_pool_name" {
+  default = "pool-node"
 }
