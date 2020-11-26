@@ -4,7 +4,7 @@ output "cluster_name" {
 }
 
 output "cluster_zone" {
-  value      = google_container_cluster.google_container_cluster.zone
+  value      = google_container_cluster.google_container_cluster.location
   depends_on = [google_container_node_pool.primary_preemptible_nodes]
 }
 
